@@ -93,6 +93,9 @@ func checkURL(s string) (*url.URL, error) {
 func mainFunc() error {
 	u, err := checkURL(flagSource)
 	_ = u
+	if err != nil {
+		return fmt.Errorf("check URL error: %q", err)
+	}
 
 	port, err := strconv.Atoi(flagPort)
 	if err != nil || port < 0 {
